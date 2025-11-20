@@ -1,0 +1,92 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║   🔐 DOCKER HUB LOGIN INSTRUCTIONS                            ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 TWO WAYS TO LOGIN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+METHOD 1: Web-Based Login (Current)
+────────────────────────────────────
+1. The script showed you a code (e.g., GSBN-KTKG)
+2. Open: https://login.docker.com/activate
+3. Enter the code
+4. Login with your Docker Hub credentials
+5. Return to terminal and press ENTER
+
+METHOD 2: Command Line Login
+─────────────────────────────
+sudo docker login -u YOUR_USERNAME
+
+Then enter your password when prompted.
+
+Example:
+sudo docker login -u vairagitech
+
+🔑 USING ACCESS TOKEN (Recommended)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to: https://hub.docker.com/settings/security
+2. Click "New Access Token"
+3. Give it a name (e.g., "my-laptop")
+4. Copy the token
+5. Login with:
+
+   sudo docker login -u vairagitech -p YOUR_ACCESS_TOKEN
+
+⚡ COMPLETE WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Step 1: Login
+sudo docker login -u vairagitech
+
+# Step 2: Run the push script
+./docker-push.sh vairagitech
+
+# Or do it manually:
+sudo docker build -t vairagitech/ayurvedic-health-bot:latest .
+sudo docker push vairagitech/ayurvedic-health-bot:latest
+
+✅ VERIFY LOGIN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check if logged in:
+sudo docker info | grep Username
+
+Should show: Username: vairagitech
+
+🔓 LOGOUT (if needed)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+sudo docker logout
+
+🚨 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problem: "permission denied"
+Solution: Use sudo with all docker commands
+
+Problem: "unauthorized"
+Solution: Logout and login again
+   sudo docker logout
+   sudo docker login -u vairagitech
+
+Problem: Web login not working
+Solution: Use command line login instead
+   sudo docker login -u vairagitech
+
+📝 AFTER LOGIN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Once logged in, run:
+./docker-push.sh vairagitech
+
+The script will:
+1. ✅ Verify login
+2. 🔨 Build your image
+3. 📤 Push to Docker Hub
+4. 🎉 Done!
+
+Your image will be at:
+https://hub.docker.com/r/vairagitech/ayurvedic-health-bot

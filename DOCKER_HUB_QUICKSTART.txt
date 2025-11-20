@@ -1,0 +1,101 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║   🐳 DOCKER HUB UPLOAD - QUICK REFERENCE                      ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 PREREQUISITES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Docker Hub account (https://hub.docker.com/signup)
+2. Docker installed and running
+3. Your Docker Hub username
+
+🚀 METHOD 1: AUTOMATED SCRIPT (EASIEST)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+./docker-push.sh YOUR_DOCKERHUB_USERNAME
+
+Example:
+./docker-push.sh vairagi
+
+⚡ METHOD 2: MANUAL COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Login
+─────────────
+docker login
+
+Step 2: Build with your username
+─────────────────────────────────
+docker build -t YOUR_USERNAME/ayurvedic-health-bot:latest .
+
+Example:
+docker build -t vairagi/ayurvedic-health-bot:latest .
+
+Step 3: Push to Docker Hub
+───────────────────────────
+docker push YOUR_USERNAME/ayurvedic-health-bot:latest
+
+Example:
+docker push vairagi/ayurvedic-health-bot:latest
+
+✅ VERIFY UPLOAD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Visit: https://hub.docker.com/repositories
+
+📥 SHARE WITH OTHERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Anyone can now pull and run your image:
+
+docker pull YOUR_USERNAME/ayurvedic-health-bot:latest
+
+docker run -d -p 3000:3000 \
+  -e GEMINI_API_KEY=their_key \
+  YOUR_USERNAME/ayurvedic-health-bot:latest
+
+🔧 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problem: "denied: requested access to the resource is denied"
+Solution: docker logout && docker login
+
+Problem: "unauthorized: authentication required"
+Solution: Login with correct credentials
+
+Problem: Docker not running
+Solution: Start Docker Desktop or run: sudo systemctl start docker
+
+📚 FULL GUIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+See DOCKER_HUB_GUIDE.md for complete documentation
+
+🎯 EXAMPLE WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Login
+docker login
+
+# Build
+docker build -t vairagi/ayurvedic-health-bot:latest .
+
+# Test locally
+docker run -d -p 3000:3000 \
+  -e GEMINI_API_KEY=your_key \
+  vairagi/ayurvedic-health-bot:latest
+
+# Visit http://localhost:3000 to test
+
+# Push to Docker Hub
+docker push vairagi/ayurvedic-health-bot:latest
+
+# Done! 🎉
+
+🌐 YOUR IMAGE URL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+https://hub.docker.com/r/YOUR_USERNAME/ayurvedic-health-bot
+
+💡 TIPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Use access tokens instead of password for security
+• Tag versions: v1.0.0, v1.0, v1, latest
+• Make repository public for easy sharing
+• Add README on Docker Hub with usage instructions
+• Set up automated builds with GitHub Actions
