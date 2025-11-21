@@ -9,7 +9,7 @@ export const HomePage = (app) => `
           </svg>
         </div>
         <h1 class="text-5xl md:text-7xl font-bold mb-4">
-          <span class="gradient-text">Ayurvedic</span>
+          <span class="gradient-text">Ayurvedic_medical_bot</span>
           <br/>
           <span class="text-white">Health Assistant</span>
         </h1>
